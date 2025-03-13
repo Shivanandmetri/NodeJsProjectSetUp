@@ -28,7 +28,9 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT;
-const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL =
+  process.env.MONGO_URL ||
+  "mongodb+srv://shivanand1998metri:Shiva8466@cluster0.fcjuvyn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -41,8 +43,8 @@ app.use("/api/student", studentRoutes);
 
 mongoose
   .connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
     dbName: "NodeDemo",
   })
   .then(() => {
